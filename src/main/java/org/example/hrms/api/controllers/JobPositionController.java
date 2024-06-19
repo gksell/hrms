@@ -1,14 +1,12 @@
 package org.example.hrms.api.controllers;
 
 import org.example.hrms.business.abstracts.JobPositionService;
-import org.example.hrms.core.utilities.results.Result;
-import org.example.hrms.entities.concretes.JobPosition;
 import org.example.hrms.entities.dtos.JobPositionDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("api/job_positions")
@@ -26,7 +24,7 @@ public class JobPositionController {
     }
 
     @PostMapping("add")
-    public ResponseEntity<?>  addJobPosition(@RequestBody JobPositionDto jobPositionDto) {
+    public ResponseEntity<?>  addJobPosition(@RequestBody @Valid JobPositionDto jobPositionDto) {
         return ResponseEntity.ok(this.jobPositionService.add(jobPositionDto));
     }
 }

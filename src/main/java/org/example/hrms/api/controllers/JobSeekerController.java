@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/job_seeker")
 public class JobSeekerController {
@@ -22,7 +24,7 @@ public class JobSeekerController {
     }
 
     @PostMapping
-    public ResponseEntity<?> addJobSeeker(@RequestBody JobSeekerDto jobSeekerDto) {
+    public ResponseEntity<?> addJobSeeker(@RequestBody @Valid JobSeekerDto jobSeekerDto) {
         return ResponseEntity.ok(this.jobSeekerService.add(jobSeekerDto));
     }
 }
